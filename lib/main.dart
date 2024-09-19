@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';  // Import the login page
-import 'home_page.dart';  // Import the home page
+import 'package:firebase_core/firebase_core.dart';
+import 'package:irchadtest/home_page.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(IrchadApp());
 }
 
@@ -14,7 +19,8 @@ class IrchadApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: LoginPage(), // Start with the LoginPage
+      home: HomePage(), // Your HomePage widget
     );
   }
 }
+
